@@ -1,0 +1,14 @@
+#goal definition
+float32[] setpoints
+float32 transition_time
+
+---
+
+#result definition
+bool success
+
+---
+
+#feedback
+bool sent
+bool success

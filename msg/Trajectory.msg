@@ -1,0 +1,1 @@
+robotiq_trajectory_control/TrajectoryPoint[] points

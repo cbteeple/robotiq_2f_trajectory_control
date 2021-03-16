@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<launch>
+
+
+<!-- To use this   -->
+
+<!-- get the arguments from  -->
+	<arg name="sim" default="false"/>
+	<arg name="comport" default="/dev/ttyUSB0" unless="$(arg sim)"/> 
+	<arg name="baud" default="115200" unless="$(arg sim)"/> 
+	<arg name="rate" default="50"                                 doc="Frequenzy in Herz of gripper state update"/>
+	<arg name="debug" default="False" doc="Whether debug is on" />
+
+
+	<include file="$(find robotiq_2f_gripper_control)/launch/robotiq_action_server.launch">
+        <arg name="comport" value="$(arg comport)" unless="$(arg sim)"/>
+        <arg name="baud" value="$(arg baud)" unless="$(arg sim)"/>
+        <arg name="stroke" value="0.085"/>
+        <arg name="joint_name" value="finger_joint"/>
+        <arg name="verbose" value="true"/>
+        <arg name="sim" value="$(arg sim)"/>
+        <arg name="rate" value="$(arg rate)"/>
+	</include>
+
+
+	<node name="robotiq_traj_follower_node" pkg="robotiq_trajectory_control" type="traj_server.py" respawn="false"
+		output="screen">
+		<param name="DEBUG" type="bool" value="$(arg debug)"/>
+		<param name="action_name" value="command_robotiq_action" />
+	</node>
+
+</launch>

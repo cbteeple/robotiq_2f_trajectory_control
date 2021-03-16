@@ -1,0 +1,14 @@
+#goal definition
+bool traj
+bool data
+bool wait_for_finish
+
+---
+
+#result definition
+bool success
+
+---
+
+#feedback
+bool success

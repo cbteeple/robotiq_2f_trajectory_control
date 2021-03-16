@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<launch>
+
+
+<!-- To use this   -->
+
+<!-- get the arguments from  -->
+<arg name="debug" default="False" doc="Whether debug is on" />
+
+
+<!-- Load controller settings -->
+  <group>
+    <!-- Load the config node and settings -->
+    <node name="robotiq_traj_follower_node" pkg="robotiq_trajectory_control" type="traj_server.py" respawn="false"
+    	output="screen">
+    	<param name="DEBUG" type="bool" value="$(arg debug)"/>
+    </node>
+  </group>
+
+
+</launch>

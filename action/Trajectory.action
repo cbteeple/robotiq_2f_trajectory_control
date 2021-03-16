@@ -1,0 +1,13 @@
+#goal definition
+robotiq_trajectory_control/Trajectory trajectory
+
+---
+
+#result definition
+bool success
+
+---
+
+#feedback
+duration current_time
+bool success

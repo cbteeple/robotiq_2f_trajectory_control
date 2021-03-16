@@ -1,0 +1,16 @@
+#goal definition
+string command
+float32[] args
+bool wait_for_ack
+
+---
+
+#result definition
+bool success
+
+---
+
+#feedback
+bool sent
+bool success
+string out_string
