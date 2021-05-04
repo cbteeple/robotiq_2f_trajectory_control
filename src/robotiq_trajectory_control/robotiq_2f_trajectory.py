@@ -60,9 +60,9 @@ class trajSender:
 
 
     def go_to_start(self, traj_goal, reset_time, blocking=True):
+        if traj_goal is None:
+            return False
         self.start_pos = traj_goal[0][1]
-
-        print(traj_goal)
 
         goal_tmp = TrajectoryGoal()
         goal_tmp.trajectory = Trajectory()
@@ -77,8 +77,11 @@ class trajSender:
 
 
     def execute_traj(self, traj_goal, blocking=True):
+        print(traj_goal)
         #try:
         self.traj_client.send_goal(traj_goal)
+
+        print('Goal Sent')
 
         if blocking:
             self.traj_client.wait_for_result()

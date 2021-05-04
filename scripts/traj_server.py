@@ -48,9 +48,7 @@ class TrajAction(object):
         print(self.traj_points)
         print(self.traj_times)
 
-        traj_interp = interp1d(self.traj_times,self.traj_points, axis=0)
-
-        
+        #traj_interp = interp1d(self.traj_times,self.traj_points, axis=0)
 
         # helper variables
         r = rospy.Rate(self.controller_rate)
@@ -67,6 +65,7 @@ class TrajAction(object):
         idx=0
 
         cur_pt_idx = 0
+        print('Starting Trajectory')
 
         while curr_time.to_sec() < self.traj_times[-1] and not rospy.is_shutdown():
             # start executing the action
@@ -101,6 +100,8 @@ class TrajAction(object):
 
                 r.sleep()
                 idx += 1
+
+        print('Total Iterations: %d'%(idx))
 
 
         Robotiq.goto(self.command_client,
