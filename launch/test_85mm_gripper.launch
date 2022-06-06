@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<launch>
+
+    <!-- Launch action client example  -->
+    <node pkg="robotiq_2f_gripper_control" type="robotiq_2f_action_client_example.py" 
+        name="robotiq_85_client" output="screen">
+        <param name="action_name" value="command_robotiq_action" />
+    </node>
+</launch>
